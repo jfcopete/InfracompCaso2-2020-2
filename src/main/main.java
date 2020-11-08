@@ -47,8 +47,31 @@ public class main {
 		return null;
 	}
 	
+	/**
+	 * 
+	 * @param input
+	 * @return
+	 * @throws NoSuchAlgorithmException
+	 */
 	public static String getSHA384(String input) throws NoSuchAlgorithmException {
 		MessageDigest md = MessageDigest.getInstance("SHA-384");
+		byte[] messageDigest = md.digest(input.getBytes());
+		BigInteger no = new BigInteger(1, messageDigest);
+		String hastext = no.toString(16);
+		while (hastext.length() < 32) {
+			hastext= "0"+hastext;
+		}
+		return hastext;
+	}
+	
+	/**
+	 * 
+	 * @param input
+	 * @return
+	 * @throws NoSuchAlgorithmException
+	 */
+	public static String getSHA512(String input) throws NoSuchAlgorithmException {
+		MessageDigest md = MessageDigest.getInstance("SHA-512");
 		byte[] messageDigest = md.digest(input.getBytes());
 		BigInteger no = new BigInteger(1, messageDigest);
 		String hastext = no.toString(16);
@@ -91,6 +114,15 @@ public class main {
 		}
 		else if (alg.equals("SHA-384")) {
 			codigo = getSHA384(cadena);
+		}else if (alg.contentEquals("SHA-512")) {
+			codigo= getSHA512(cadena);
+		}else if (alg.equals("TODOS")) {
+			System.out.println("El hash para la cadena "+ cadena+" en TODOS los algoritmos es:");
+			System.out.println("MD5: "+getMd5(cadena));
+			System.out.println("SHA-256: "+bytesToHex(getSHA256(cadena)) );
+			System.out.println("SHA-384: "+getSHA384(cadena));
+			System.out.println("SHA-512: "+getSHA512(cadena));
+			
 		}
 		return codigo;
 	}
@@ -108,7 +140,9 @@ public class main {
 		System.out.println("Escriba el nombre del algoritmo :");
 		System.out.println("1: MD5");
 		System.out.println("2: SHA-256");
-		System.out.println("2: SHA-384");
+		System.out.println("3: SHA-384");
+		System.out.println("4: SHA-512");
+		System.out.println("5: TODOS");
 		String alg = br.readLine();
 		System.out.println("Intregar Cadena");
 		String cadena = br.readLine();
