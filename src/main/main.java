@@ -12,9 +12,9 @@ import java.security.NoSuchAlgorithmException;
 public class main {
 	
 	/**
-	 * 
-	 * @param input
-	 * @return
+	 * Método que retorna el hash criptografico MD5 del input
+	 * @param input, String que será usado en la función hash MD5
+	 * @return el string del hash criptografico correspondiente
 	 */
 	public static String getMd5(String input)
 	{
@@ -33,9 +33,9 @@ public class main {
 	}
 	
 	/**
-	 * 
-	 * @param input
-	 * @return
+	 * Método que retorna el hash criptografico SHA-256 del input
+	 * @param input, String que será usado en la función hash SHA-256
+	 * @return el string del hash criptografico correspondiente
 	 */
 	public static byte[] getSHA256(String input) {
 		try {
@@ -48,10 +48,10 @@ public class main {
 	}
 	
 	/**
-	 * 
-	 * @param input
-	 * @return
-	 * @throws NoSuchAlgorithmException
+	 * Método que retorna el hash criptografico SHA-384 del input
+	 * @param input, String que será usado en la función hash SHA-384
+	 * @return el string del hash criptografico correspondiente
+	 * @throws NoSuchAlgorithmException si se genera alguna exception.
 	 */
 	public static String getSHA384(String input) throws NoSuchAlgorithmException {
 		MessageDigest md = MessageDigest.getInstance("SHA-384");
@@ -65,10 +65,10 @@ public class main {
 	}
 	
 	/**
-	 * 
-	 * @param input
-	 * @return
-	 * @throws NoSuchAlgorithmException
+	 * Método que retorna el hash criptografico SHA-512 del input
+	 * @param input, String que será usado en la función hash SHA-512
+	 * @return el string del hash criptografico correspondiente
+	 * @throws NoSuchAlgorithmException si se genera alguna exception.
 	 */
 	public static String getSHA512(String input) throws NoSuchAlgorithmException {
 		MessageDigest md = MessageDigest.getInstance("SHA-512");
@@ -82,9 +82,9 @@ public class main {
 	}
 	
 	/**
-	 * 
-	 * @param hash
-	 * @return
+	 * Método auxiliar que transforma HexToString, para ayudar a SHA-256
+	 * @param hash Array de bytes
+	 * @return String convertido.
 	 */
 	public static String bytesToHex(byte[] hash ) {
 		BigInteger number = new BigInteger(1,hash);
@@ -97,11 +97,11 @@ public class main {
 	}
 	
 	/**
-	 * 
-	 * @param cadena
-	 * @param alg
-	 * @return
-	 * @throws NoSuchAlgorithmException 
+	 * Método que se encarga de controlar la l´pgica del programa
+	 * @param cadena, String que será transformado
+	 * @param alg, Algoritmo a usar
+	 * @return Los codigos criptograficos.
+	 * @throws NoSuchAlgorithmException si se tiene alguna exception.
 	 */
 	public static String generar_codigo(String cadena,String alg) throws NoSuchAlgorithmException
 	{
@@ -128,7 +128,7 @@ public class main {
 	}
 
 	/**
-	 * 
+	 * Metodo Principal que sirve como CLI o GUI para la ejecución del programa.
 	 * @param args
 	 * @throws IOException
 	 */
